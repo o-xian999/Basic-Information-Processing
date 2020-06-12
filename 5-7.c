@@ -1,29 +1,26 @@
 #include <stdio.h>
 
 int main(void){
-  int a, b, c, ans = 0;
-  int flag = 1;
-  printf("数値を入力してくださいー＞");
-  scanf("%d", &a);
-  printf("%dの約数を表示します\n", a);
-  //printf("\n");
-  b = 1;
-  while(b <= a) {
-    c = a % b;
-    if (c == 0) {
-      printf(" %d :", b);
-      ans++;
-      if(b != 1 && b != a)flag = 0;
+  int a, b, c, n, count = 0, ans = 0;
+  printf("数値を入力してください->");
+  scanf("%d", &n);
+  printf("%d以下の素数を表示します。\n", n);
+
+  for(a = 2; a <= n; a++){
+    b = 1;
+    count = 0;
+    while(b <= a){
+      c = a % b;
+      if(c == 0){
+        count++;
+      }
+      b++;
     }
-    b++;
-  }
-  printf("\n");
-  printf("%dの約数は%d個です\n", a, ans);
-  if(flag){
-    printf("%dは素数です\n", a);
-  }else{
-    printf("%dは素数ではありません\n", a);
+    if(count == 2){
+      printf("%d : ", a);
+      ans++;
+    }
   }
 
-  return 0;
-
+  printf("\n%d以下の素数は%d個あります。\n", n, ans);
+}
